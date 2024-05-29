@@ -7,20 +7,12 @@ export default async function handleProfileSignup(
   fileName
 ) {
   const sign = signUpUser(firstName, lastName)
-    .then((value) => {
-      status: 'fuffiled', value;
-    })
-    .catch((value) => {
-      status: 'rejected', value;
-    });
-  const upload = uploadPhoto(fileName)
-    .then((value) => {
-      status: 'fuffiled', value;
-    })
-    .catch((value) => {
-      status: 'rejected', value;
-    });
+    .then((value) => ({ status: 'fulfilled', value }))
+    .catch((error) => ({ status: 'rejected', reason: error.toString() }));
 
-  let ans = Promise.all([sign, upload]);
-  return ans;
+  const upload = uploadPhoto(fileName)
+    .then((value) => ({ status: 'fulfilled', value }))
+    .catch((error) => ({ status: 'rejected', reason: error.toString() }));
+
+  return Promise.all([sign, upload]);
 }
