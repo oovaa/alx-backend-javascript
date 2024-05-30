@@ -9,7 +9,6 @@ export default async function asyncUploadUser() {
   } catch (e) {
     ans = [null, null];
   }
-
   return {
     photo: ans[0],
     user: ans[1]
