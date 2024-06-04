@@ -4,14 +4,20 @@
  * @param {String} startString
  */
 export default function cleanSet(set, startString) {
-  let ans = "";
-  if (startString == "") {
-    return "";
-  }
+  let ans = [];
+  if (
+    !set ||
+    !startString ||
+    !(set instanceof Set) ||
+    typeof startString !== 'string'
+  )
+    return '';
+
   set.forEach((x) => {
-    if (x.startsWith(startString)) {
-      ans += x.replace(startString, "") + "-";
+    if (typeof x === 'string' && x.startsWith(startString)) {
+      const xSubStr = x.substring(startString.length);
+      ans.push(xSubStr);
     }
   });
-  return ans.slice(0, -1);
+  return ans.join('-');
 }
