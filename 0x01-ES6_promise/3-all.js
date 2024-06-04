@@ -1,4 +1,4 @@
-import { createUser, uploadPhoto } from './utils';
+import { createUser, uploadPhoto } from "./utils";
 
 export default async function handleProfileSignup() {
   try {
@@ -8,8 +8,8 @@ export default async function handleProfileSignup() {
     let body = ans[0].body;
     let fname = ans[1].firstName;
     let lname = ans[1].lastName;
-    console.log([body, fname, lname].join(' '));
+    console.log([body, fname, lname].join(" "));
   } catch (e) {
-    console.log('Signup system offline');
+    console.log("Signup system offline");
   }
 }
