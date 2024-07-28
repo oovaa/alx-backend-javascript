@@ -34,3 +34,4 @@ const countStudents = (path) => {
 };
 
 countStudents('./database.csv');
+countStudents('./sd.csv');
